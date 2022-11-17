@@ -25,11 +25,11 @@ public class DaoContratos extends DaoBase{
 
             while(rs.next()){
                 Contratos contratos = new Contratos();
-                contratos.setNombreCliente(rs.getString(1));
+                contratos.setIdCliente(rs.getString(1));
                 contratos.setNroDeContrato(rs.getString((2)));
-                contratos.setEstadoDelContrato(rs.getString(3));
+                contratos.setEstadoDelContrato(rs.getInt(3));
                 contratos.setMesesEnEseEstado(rs.getInt(4));
-                contratos.setDivisa(rs.getString(5));
+                contratos.setDivisa(rs.getInt(5));
                 contratos.setExpectedLoss(rs.getInt(6));
                 listaContratos.add(contratos);
 

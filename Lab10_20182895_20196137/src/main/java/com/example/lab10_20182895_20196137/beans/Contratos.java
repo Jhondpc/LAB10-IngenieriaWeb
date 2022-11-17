@@ -2,20 +2,15 @@ package com.example.lab10_20182895_20196137.beans;
 
 public class Contratos {
 
-    private String nombreCliente;
+    private String idCliente;
     private String nroDeContrato;
-    private String estadoDelContrato;
+    private int estadoDelContrato;
     private int mesesEnEseEstado;
-    private String divisa;
-    private float expectedLoss;
+    private int divisa;
 
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
+    public String getIdCliente() {return idCliente;}
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
+    public void setIdCliente(String idCliente) {this.idCliente = idCliente;}
 
     public String getNroDeContrato() {
         return nroDeContrato;
@@ -25,11 +20,11 @@ public class Contratos {
         this.nroDeContrato = nroDeContrato;
     }
 
-    public String getEstadoDelContrato() {
+    public int getEstadoDelContrato() {
         return estadoDelContrato;
     }
 
-    public void setEstadoDelContrato(String estadoDelContrato) {
+    public void setEstadoDelContrato(int estadoDelContrato) {
         this.estadoDelContrato = estadoDelContrato;
     }
 
@@ -41,19 +36,12 @@ public class Contratos {
         this.mesesEnEseEstado = mesesEnEseEstado;
     }
 
-    public String getDivisa() {
+    public int getDivisa() {
         return divisa;
     }
 
-    public void setDivisa(String divisa) {
+    public void setDivisa(int divisa) {
         this.divisa = divisa;
     }
 
-    public float getExpectedLoss() {
-        return expectedLoss;
-    }
-
-    public void setExpectedLoss(float expectedLoss) {
-        this.expectedLoss = expectedLoss;
-    }
 }

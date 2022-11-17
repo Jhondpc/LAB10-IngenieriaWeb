@@ -6,7 +6,6 @@ public class Clientes {
     private String tipoCliente;
     private String tipoDocumento;
     private String numeroDocumento;
-    private int cantidadDeContratos;
 
     public String getNombreCliente() {
         return nombreCliente;
@@ -48,11 +47,4 @@ public class Clientes {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public int getCantidadDeContratos() {
-        return cantidadDeContratos;
-    }
-
-    public void setCantidadDeContratos(int cantidadDeContratos) {
-        this.cantidadDeContratos = cantidadDeContratos;
-    }
 }
