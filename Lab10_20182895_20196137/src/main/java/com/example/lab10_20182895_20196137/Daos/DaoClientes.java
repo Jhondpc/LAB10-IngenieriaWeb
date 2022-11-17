@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DaoClientes extends DaoBase {
 
-    public ArrayList<Clientes> listarClientes(){
+    /*public ArrayList<Clientes> listarClientes(){
 
         ArrayList<Clientes> listaClientes = new ArrayList<>();
         try{
@@ -38,5 +38,36 @@ public class DaoClientes extends DaoBase {
         }
         return listaClientes;
 
+    }*/
+
+    public ArrayList<Clientes> listarClientesRegistrados(){
+
+        ArrayList<Clientes> listaClientes = new ArrayList<>();
+        try{
+            Connection connection = getConnection();
+            String sql = "select nro_documento from bi_corp_business.jm_client_bii";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                Clientes clientes = new Clientes();
+                clientes.setNumeroDocumento(rs.getString(1));
+                clientes.setNombreCliente(rs.getString((2)));
+                clientes.setEdad(rs.getString(3));
+                clientes.setTipoCliente(rs.getString(4));
+                clientes.setTipoDocumento(rs.getString(5));
+                listaClientes.add(clientes);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaClientes;
+
     }
+
+
+
+
+
 }
