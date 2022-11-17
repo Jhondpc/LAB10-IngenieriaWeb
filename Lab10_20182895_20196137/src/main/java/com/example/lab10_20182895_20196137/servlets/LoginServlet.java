@@ -9,11 +9,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-@WebServlet(name = "AdminServlet", value = "/AdminServlet")
-public class AdminServlet extends HttpServlet {
+@WebServlet(name = "LoginServlet", value = "/LoginServlet")
+public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
