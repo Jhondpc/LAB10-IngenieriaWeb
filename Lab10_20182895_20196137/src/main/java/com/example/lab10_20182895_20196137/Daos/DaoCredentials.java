@@ -14,21 +14,18 @@ public class DaoCredentials extends DaoBase{
 
         Credentials credentials = new Credentials();
 
-        String sql = "SELECT * FROM jobs WHERE job_id = ?";
+        String sql = "SELECT * FROM bi_corp_business.credentials where nro_documento=? and hashedPassword = SHA2(?,256);";
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            //pstmt.setString(1, jobId);
+            pstmt.setString(1, numeroDocumento);
+            pstmt.setString(2, password);
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    /*
-                    job = new Job();
-                    job.setJobId(rs.getString(1));
-                    job.setJobTitle(rs.getString(2));
-                    job.setMinSalary(rs.getInt(3));
-                    job.setMaxSalary(rs.getInt(4));
-
-                     */
+                    String nroDocumento = rs.getString(1);
+                    int tipoUsuario = rs.getInt(2);
+                    credentials.setNumeroDocumento(nroDocumento);
+                    credentials.setTipoUsuario(tipoUsuario);
                 }
             }
         } catch (SQLException e) {
