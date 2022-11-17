@@ -3,13 +3,33 @@ package com.example.lab10_20182895_20196137.Daos;
 import com.example.lab10_20182895_20196137.beans.Clientes;
 import com.example.lab10_20182895_20196137.beans.Credentials;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DaoCredentials extends DaoBase{
 
+    public ArrayList<Credentials> listarClientesRegistrados(){
+
+        ArrayList<Credentials> listaCredentials = new ArrayList<>();
+        try{
+            Connection connection = getConnection();
+            String sql = "select nro_documento,tipoUsuario from credentials";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                Credentials credentials = new Credentials();
+                credentials.setNumeroDocumento(rs.getString(1));
+                credentials.set(rs.getString((2)));
+                listaClientes.add(clientes);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaClientes;
+
+    }
     public Credentials buscarUsuario(String numeroDocumento, String password) {
 
         Credentials credentials = new Credentials();
