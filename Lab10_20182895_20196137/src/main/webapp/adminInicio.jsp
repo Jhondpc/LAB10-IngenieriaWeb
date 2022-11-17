@@ -48,10 +48,14 @@
                                     <form class="row g-3 needs-validation" novalidate>
 
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Ingrese DNI</label>
-                                            <div class="input-group has-validation">
-                                                <input type="text" name="username" class="form-control" id="yourUsername" required>
-                                                <div class="invalid-feedback">Ingresa DNI</div>
+                                            <div class="col-lg-3">
+                                                <label for="DNI" class="form-label">DNI</label>
+                                                <select class="form-select" id="DNI" placeholder="DNI" name="DNI">
+                                                    <option value="">Seleccione una opción</option>
+                                                    <option value="Hombre">Hombre</option>
+                                                    <option value="Mujer">Mujer</option>
+                                                    <option value="Otro">Otro</option>
+                                                </select>
                                             </div>
                                         </div>
 

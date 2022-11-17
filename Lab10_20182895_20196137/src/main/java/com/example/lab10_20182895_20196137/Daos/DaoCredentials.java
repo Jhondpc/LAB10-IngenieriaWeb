@@ -20,14 +20,14 @@ public class DaoCredentials extends DaoBase{
             while(rs.next()){
                 Credentials credentials = new Credentials();
                 credentials.setNumeroDocumento(rs.getString(1));
-                credentials.set(rs.getString((2)));
-                listaClientes.add(clientes);
+                credentials.setTipoUsuario(rs.getInt((2)));
+                listaCredentials.add(credentials);
 
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return listaClientes;
+        return listaCredentials;
 
     }
     public Credentials buscarUsuario(String numeroDocumento, String password) {

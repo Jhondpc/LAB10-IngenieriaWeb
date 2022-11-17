@@ -40,7 +40,7 @@ public class DaoClientes extends DaoBase {
 
     }*/
 
-    public ArrayList<Clientes> listarClientesRegistrados(){
+    public ArrayList<Clientes> listarClientes(){
 
         ArrayList<Clientes> listaClientes = new ArrayList<>();
         try{
