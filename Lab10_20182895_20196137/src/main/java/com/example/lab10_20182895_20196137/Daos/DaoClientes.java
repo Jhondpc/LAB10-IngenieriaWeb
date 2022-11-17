@@ -30,7 +30,6 @@ public class DaoClientes extends DaoBase {
                 clientes.setTipoCliente(rs.getString(3));
                 clientes.setTipoDocumento(rs.getString(4));
                 clientes.setNumeroDocumento(rs.getString(5));
-                clientes.setCantidadDeContratos(rs.getInt(6));
                 listaClientes.add(clientes);
 
             }

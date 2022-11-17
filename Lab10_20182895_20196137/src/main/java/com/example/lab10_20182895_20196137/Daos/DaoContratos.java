@@ -30,7 +30,6 @@ public class DaoContratos extends DaoBase{
                 contratos.setEstadoDelContrato(rs.getInt(3));
                 contratos.setMesesEnEseEstado(rs.getInt(4));
                 contratos.setDivisa(rs.getInt(5));
-                contratos.setExpectedLoss(rs.getInt(6));
                 listaContratos.add(contratos);
 
             }
