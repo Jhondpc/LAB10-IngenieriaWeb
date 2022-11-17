@@ -7,26 +7,24 @@ import java.util.ArrayList;
 
 public class DaoClientes extends DaoBase {
 
-    /*public ArrayList<Clientes> listarClientes(){
+    public ArrayList<Clientes> listarClientes(){
 
         ArrayList<Clientes> listaClientes = new ArrayList<>();
         try{
             Connection connection = getConnection();
-            String sql = "select concat(c.g4093_name, ' ' , coalesce( c.g4093_last_name ,'')) as 'Cliente',\n" +
-                    "\t\tc.g4093_age as 'Edad',\n" +
-                    "\t\tcase when c.g4093_type='N' then 'Normal' when c.g4093_type='J' then 'Juridica' end as 'Tipo de Cliente',\n" +
-                    "        c.g4093_documentType as 'Tipo de Documento',\n" +
-                    "        c.g4093_nro_id as 'Numero de Documento',\n" +
-                    "        count(g4093_nro_id) as 'Cantidad de Contratos'\n" +
-                    "from jm_client_bii c inner join jm_cotr_bis p on (c.g4093_nro_id = p.client_nro_id)\n" +
-                    "group by g4093_nro_id;";
+            String sql = "select c.g4093_name as 'Cliente',\n" +
+                    "\tc.g4093_age as 'Edad',\n" +
+                    "    case when c.g4093_type='N' then 'Normal' when c.g4093_type='J' then 'Juridica' end as 'Tipo de Cliente',\n" +
+                    "    c.g4093_documentType as 'Tipo de Documento',\n" +
+                    "    c.g4093_nro_id as 'Nro de Documento'\n" +
+                    "\tfrom jm_client_bii c;";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){
                 Clientes clientes = new Clientes();
                 clientes.setNombreCliente(rs.getString(1));
-                clientes.setEdad(rs.getString((2)));
+                clientes.setEdad(rs.getString(2));
                 clientes.setTipoCliente(rs.getString(3));
                 clientes.setTipoDocumento(rs.getString(4));
                 clientes.setNumeroDocumento(rs.getString(5));
@@ -38,36 +36,32 @@ public class DaoClientes extends DaoBase {
         }
         return listaClientes;
 
-    }*/
+    }
 
-    public ArrayList<Clientes> listarClientes(){
+    public Clientes buscarCliente(String numeroDocumento) {
 
-        ArrayList<Clientes> listaClientes = new ArrayList<>();
+        Clientes cliente = null;
         try{
             Connection connection = getConnection();
-            String sql = "select nro_documento from bi_corp_business.jm_client_bii";
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            String sql = "SELECT * FROM jm_client_bii where g4093_nro_id= ?;";
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1,numeroDocumento);
 
-            while(rs.next()){
-                Clientes clientes = new Clientes();
-                clientes.setNumeroDocumento(rs.getString(1));
-                clientes.setNombreCliente(rs.getString((2)));
-                clientes.setEdad(rs.getString(3));
-                clientes.setTipoCliente(rs.getString(4));
-                clientes.setTipoDocumento(rs.getString(5));
-                listaClientes.add(clientes);
-
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    cliente = new Clientes();
+                    cliente.setNumeroDocumento(rs.getString(1));
+                    cliente.setNombreCliente(rs.getString(2));
+                    cliente.setEdad(rs.getString(3));
+                    cliente.setTipoCliente(rs.getString(4));
+                    cliente.setTipoDocumento(rs.getString(5));
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return listaClientes;
-
+        return cliente;
     }
-
-
-
 
 
 }
