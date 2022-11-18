@@ -6,6 +6,7 @@
     ArrayList<Clientes> listaClientes = (ArrayList<Clientes>) request.getAttribute("listaClientes");
     ArrayList<Credentials> listaCredentials = (ArrayList<Credentials>) request.getAttribute("listaCredentials");
 %>
+
 <html lang="en">
 
     <head>

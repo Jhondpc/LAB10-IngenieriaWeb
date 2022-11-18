@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -39,6 +40,12 @@ public class LoginServlet extends HttpServlet {
             }else if (credentials.getTipoUsuario()==1){
                 HttpSession sessionAdmin = request.getSession();
                 sessionAdmin.setAttribute("admin", usuarioRegistrado);
+                ArrayList<Clientes> listaClientes = daoClientes.listarClientes();
+                ArrayList<Credentials> listaCredentials=daoCredentials.listarClientesRegistrados();
+
+
+                request.setAttribute("listaClientes", listaClientes);
+                request.setAttribute("listaCredentials", listaCredentials);
                 response.sendRedirect(request.getContextPath() + "/adminInicio.jsp");
             }
         }else{
