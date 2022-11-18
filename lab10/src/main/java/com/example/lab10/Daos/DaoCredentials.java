@@ -42,7 +42,7 @@ public class DaoCredentials extends DaoBase{
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     String nroDocumento = rs.getString(1);
-                    int tipoUsuario = rs.getInt(2);
+                    int tipoUsuario = rs.getInt(4);
                     credentials.setNumeroDocumento(nroDocumento);
                     credentials.setTipoUsuario(tipoUsuario);
                 }
