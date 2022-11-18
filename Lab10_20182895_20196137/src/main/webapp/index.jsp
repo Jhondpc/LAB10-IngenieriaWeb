@@ -45,28 +45,28 @@
                                         <h5 class="card-title text-center pb-0 fs-4">Ingresa a tu cuenta</h5>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate>
+                                    <form method="post" action="<%=request.getContextPath()%>/LoginServlet" class="row g-3 needs-validation" novalidate>
 
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Nombre de usuario</label>
-                                            <div class="input-group has-validation">
-                                                <input type="text" name="username" class="form-control" id="yourUsername" required>
-                                                <div class="invalid-feedback">Ingresa tu usuario.</div>
-                                            </div>
+                                            <label for="nroDocumento" class="form-label">Número de Documento</label>
+                                            <input  required type="text" name="nroDocumento" class="form-control" id="nroDocumento">
+                                            <div class="invalid-feedback">Ingresa tu número de documento!</div>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Contraseña</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                            <label for="password" class="form-label">Contraseña</label>
+                                            <input type="password" name="password" class="form-control" id="password" required>
                                             <div class="invalid-feedback">Ingresa tu contraseña!</div>
                                         </div>
+                                        <% if (session.getAttribute("error") != null) { %>
+                                        <p class="text-danger small mb-0"><%=session.getAttribute("error")%></p>
+                                        <% session.removeAttribute("error");
+                                        } %>
 
                                         <div class="col-12">
-                                            <a class="nav-link  " href="<%=request.getContextPath()%>/ServletIniciarSesion?action=inicioUsuario">
-                                                <button type="button" class="btn btn-primary w-100" type="submit">Iniciar Sesión</button>
+                                            <a class="nav-link  " >
+                                                <button type="submit" class="btn btn-primary w-100" type="submit">Iniciar Sesión</button>
                                             </a>
-
-                                        </div>
 
                                     </form>
 

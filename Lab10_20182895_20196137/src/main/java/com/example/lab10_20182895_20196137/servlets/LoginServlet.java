@@ -17,35 +17,41 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        action = (action == null) ? "listar" : action;
+        action = (action == null) ? "loginform" : action;
 
         DaoCredentials daoCredentials = new DaoCredentials();
         DaoClientes daoClientes = new DaoClientes();
-        RequestDispatcher requestDispatcher;
+        RequestDispatcher view;
         Clientes clientes=new Clientes();
         Credentials credentials=new Credentials();
         String idClientes;
 
         switch (action) {
-            case "listar":
-
-                ArrayList<Clientes> listaClientes=daoClientes.listarClientes();
-                ArrayList<Credentials> listaCredentials=daoCredentials.listarClientesRegistrados();
-
-
-                request.setAttribute("listaClientes", daoClientes.listarClientes());
-                request.setAttribute("listaCredentials", daoCredentials.listarClientesRegistrados());
-
-                requestDispatcher = request.getRequestDispatcher("AdminListaUsers.jsp");
-                requestDispatcher.forward(request, response);
-
+            case "loginform":
+                view = request.getRequestDispatcher("index.jsp");
+                view.forward(request, response);
                 break;
-
         }
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        DaoCredentials daoCredentials = new DaoCredentials();
+
+        String nroDocumento = request.getParameter("nroDocumento");
+        String password = request.getParameter("password");
+
+        Credentials credentials = daoCredentials.buscarUsuario(nroDocumento, password);
+
+        if(credentials != null){
+            if(credentials.getTipoUsuario()==1){
+
+            }else{
+
+            }
+
+        }else{
+            response.sendRedirect(request.getContextPath() + "/LoginServlet?error");
+        }
     }
 }
