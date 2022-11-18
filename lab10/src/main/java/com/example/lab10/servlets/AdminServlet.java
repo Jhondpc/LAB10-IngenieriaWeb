@@ -4,9 +4,12 @@ import com.example.lab10.Daos.DaoClientes;
 import com.example.lab10.Daos.DaoCredentials;
 import com.example.lab10.beans.Clientes;
 import com.example.lab10.beans.Credentials;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +31,7 @@ public class AdminServlet extends HttpServlet {
         switch (action) {
             case "listar":
 
-                ArrayList<Clientes> listaClientes=daoClientes.listarClientes();
+                ArrayList<Clientes> listaClientes=daoClientes.listarClientesComparacion();
                 ArrayList<Credentials> listaCredentials=daoCredentials.listarClientesRegistrados();
 
 

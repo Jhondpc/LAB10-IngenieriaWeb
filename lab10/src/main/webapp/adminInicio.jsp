@@ -59,18 +59,28 @@
                                                 <label for="DNI" class="form-label">DNI</label>
                                                 <select class="form-select" id="DNI" placeholder="DNI" name="DNI">
 
-                                                    <%  ArrayList<Clientes> listaFinal=null;
+                                                    <%  ArrayList<Clientes> listaFinal;
+
+                                                        listaFinal=new ArrayList<>();
+
                                                         for(Credentials credentials:listaCredentials){
                                                             for (Clientes clientes:listaClientes){
-                                                                if(clientes.getNumeroDocumento()!=credentials.getNumeroDocumento()){
+                                                                for (Clientes finales:listaFinal){
+                                                                    if (finales.getNumeroDocumento().equals(credentials.getNumeroDocumento())){
+                                                                        listaFinal.remove(credentials.getNumeroDocumento());
+                                                                    }
+                                                                }
+                                                                if (clientes.getNumeroDocumento().equals(credentials.getNumeroDocumento())){
+                                                                    listaClientes.remove(credentials.getNumeroDocumento());
+                                                                }else {
                                                                     listaFinal.add(clientes);
+                                                                    listaClientes.remove(credentials.getNumeroDocumento());
                                                                 }
                                                             }%>
                                                     <%}%>
 
                                                     <option value="">Seleccione una opción</option>
                                                     <%for (Clientes clientes2: listaFinal){%>
-
                                                     <option value="<%=clientes2.getNumeroDocumento()%>"><%=clientes2.getNumeroDocumento()%></option>
                                                     <%}%>
                                                 </select>

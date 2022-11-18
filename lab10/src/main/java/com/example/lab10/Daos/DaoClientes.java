@@ -38,6 +38,33 @@ public class DaoClientes extends DaoBase {
 
     }
 
+    public ArrayList<Clientes> listarClientesComparacion(){
+
+        ArrayList<Clientes> listaClientes = new ArrayList<>();
+        try{
+            Connection connection = getConnection();
+            String sql = "select * from jm_client_bii";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                Clientes clientes = new Clientes();
+                clientes.setNumeroDocumento(rs.getString(1));
+                clientes.setNombreCliente(rs.getString(2));
+                clientes.setEdad(rs.getString(3));
+                clientes.setTipoCliente(rs.getString(4));
+                clientes.setTipoDocumento(rs.getString(5));
+
+                listaClientes.add(clientes);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaClientes;
+
+    }
+
     public Clientes buscarCliente(String numeroDocumento) {
 
         Clientes cliente = null;
