@@ -35,7 +35,7 @@
     <body>
         <section class="section profile">
             <div class="container">
-                <div class="container-fluid " style="background-color: rgba(255,255,255,0.6);width: 65%">
+                <div class="container-fluid " style="background-color: #6ba7f5;width: 65%">
 
                     <div class="row">
                         <div>
@@ -44,12 +44,7 @@
                             <br>
 
                         </div>
-                        <div class="col-md-6">
-                            <td>
-                                <img src="https://cdnb.artstation.com/p/assets/images/images/031/262/015/large/seo-eaglesage-firemagecasuallsmall.jpg?1603114058"
-                                     class="rounded mx-auto d-block " alt="userphoto" height="600rem" width="380rem">
-                            </td>
-                        </div>
+
                         <div class="col-md-6">
 
                             <td style="padding-left: 2rem;">
