@@ -35,8 +35,8 @@ public class LoginServlet extends HttpServlet {
             if(credentials.getTipoUsuario()==2){
                 HttpSession sessionClienteReg = request.getSession();
                 sessionClienteReg.setAttribute("clienteRegistrado", usuarioRegistrado);
-                response.sendRedirect(request.getContextPath() + "/vistaCliente.jsp");
-            }else{
+                response.sendRedirect(request.getContextPath() + "/misDatos.jsp");
+            }else if (credentials.getTipoUsuario()==1){
                 HttpSession sessionAdmin = request.getSession();
                 sessionAdmin.setAttribute("admin", usuarioRegistrado);
                 response.sendRedirect(request.getContextPath() + "/adminInicio.jsp");

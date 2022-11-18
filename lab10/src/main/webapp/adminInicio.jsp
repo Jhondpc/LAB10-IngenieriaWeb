@@ -56,6 +56,7 @@
 
                                         <div class="col-12">
                                             <div class="col-lg-3">
+                                                <form method="post" action="<%=request.getContextPath()%>/AdminServlet?action=guardar">
                                                 <label for="DNI" class="form-label">DNI</label>
                                                 <select class="form-select" id="DNI" placeholder="DNI" name="DNI">
 
@@ -84,14 +85,18 @@
                                                     <option value="<%=clientes2.getNumeroDocumento()%>"><%=clientes2.getNumeroDocumento()%></option>
                                                     <%}%>
                                                 </select>
+
+                                                <div class="col-12">
+                                                    <label for="password" class="form-label">Ingrese Contraseña</label>
+                                                    <input type="password" name="password" class="form-control" id="password" required>
+                                                    <div class="invalid-feedback">Ingresa tu contraseña</div>
+                                                </div>
+                                                </form>
+
                                             </div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Ingrese Contraseña</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                            <div class="invalid-feedback">Ingresa tu contraseña!</div>
-                                        </div>
+
 
                                         <div class="col-12">
                                             <a class="nav-link  " href="<%=request.getContextPath()%>/ServletIniciarSesion?action=inicioUsuario">

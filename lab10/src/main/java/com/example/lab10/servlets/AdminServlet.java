@@ -1,5 +1,6 @@
 package com.example.lab10.servlets;
 
+import com.example.lab10.Daos.DaoAdmin;
 import com.example.lab10.Daos.DaoClientes;
 import com.example.lab10.Daos.DaoCredentials;
 import com.example.lab10.beans.Clientes;
@@ -43,12 +44,37 @@ public class AdminServlet extends HttpServlet {
 
                 break;
 
+            case "crear":
 
+                requestDispatcher = request.getRequestDispatcher("adminInicio.jsp");
+                requestDispatcher.forward(request, response);
+
+                break;
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        DaoAdmin daoAdmin = new DaoAdmin();
+        DaoClientes daoClientes = new DaoClientes();
+        DaoCredentials daoCredentials=new DaoCredentials();
+        Clientes clientes = new Clientes();
+        String dni;
+        Clientes client;
 
+        RequestDispatcher requestDispatcher;
+
+        switch (action) {
+            case "guardar":
+                dni=request.getParameter("DNI");
+                client=daoClientes.buscarCliente(dni);
+
+                daoCredentials.guardarCliente(client);
+                response.sendRedirect(request.getContextPath()+"/AdminServlet");
+                break;
+
+
+        }
     }
 }

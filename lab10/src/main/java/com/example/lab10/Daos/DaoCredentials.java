@@ -1,5 +1,6 @@
 package com.example.lab10.Daos;
 
+import com.example.lab10.beans.Clientes;
 import com.example.lab10.beans.Credentials;
 
 import java.sql.*;
@@ -52,6 +53,30 @@ public class DaoCredentials extends DaoBase{
         }
 
         return credentials;
+    }
+
+    public void guardarCliente(Clientes clientes){
+
+
+        String sql = "INSERT INTO jm_client_bi (g4093_nro_id,g4093_name,g4093_age,g4093_type,g4093_documentType) VALUES (?,?,?,?,?)";
+
+        try(Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1,clientes.getTipoDocumento());
+            pstmt.setString(2,clientes.getNombreCliente());
+            pstmt.setString(3,clientes.getEdad());
+            pstmt.setString(4,clientes.getTipoDocumento());
+            pstmt.setString(5, clientes.getTipoDocumento());
+
+            pstmt.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

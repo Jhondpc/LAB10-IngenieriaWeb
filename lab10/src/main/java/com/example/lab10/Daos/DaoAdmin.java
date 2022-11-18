@@ -1,8 +1,9 @@
 package com.example.lab10.Daos;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import com.example.lab10.beans.Clientes;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DaoAdmin extends DaoBase{
     public void createCredentialCliente(String numeroDocumento, String password) {
@@ -18,6 +19,8 @@ public class DaoAdmin extends DaoBase{
             e.printStackTrace();
         }
     }
+
+
 
 
 
