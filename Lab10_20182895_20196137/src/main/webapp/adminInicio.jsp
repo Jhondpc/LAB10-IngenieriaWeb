@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="admin" type="com.example.lab10_20182895_20196137.beans.Clientes" class="com.example.lab10_20182895_20196137.beans.Clientes" scope="session"/>
+
 <html lang="en">
 
     <head>

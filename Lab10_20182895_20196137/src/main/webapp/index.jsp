@@ -45,7 +45,7 @@
                                         <h5 class="card-title text-center pb-0 fs-4">Ingresa a tu cuenta</h5>
                                     </div>
 
-                                    <form method="post" action="<%=request.getContextPath()%>/LoginServlet" class="row g-3 needs-validation" novalidate>
+                                    <form class="row g-3 needs-validation" method="POST" action="<%=request.getContextPath()%>/LoginServlet">
 
                                         <div class="col-12">
                                             <label for="nroDocumento" class="form-label">Número de Documento</label>
@@ -67,6 +67,7 @@
                                             <a class="nav-link  " >
                                                 <button type="submit" class="btn btn-primary w-100" type="submit">Iniciar Sesión</button>
                                             </a>
+                                        </div>
 
                                     </form>
 
